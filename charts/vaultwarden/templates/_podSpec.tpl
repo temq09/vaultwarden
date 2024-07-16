@@ -68,6 +68,24 @@ containers:
       - name: DISABLE_ADMIN_TOKEN
         value: "true"
       {{- end }}
+      {{- if or (.Values.yubico.clientId.value) (.Values.yubico.clientId.existingSecretKey) }}
+      - name: YUBICO_CLIENT_ID
+        valueFrom: 
+          secretKeyRef:
+            name: {{ default (include "vaultwarden.fullname" .) .Values.yubico.existingSecret }}
+            key: {{ default "YUBICO_CLIENT_ID" .Values.yubico.clientId.existingSecretKey }}
+      {{- end }}
+      {{- if or (.Values.yubico.secretKey.value) (.Values.yubico.secretKey.existingSecretKey) }}
+      - name: YUBICO_SECRET_KEY
+        valueFrom: 
+          secretKeyRef:
+            name: {{ default (include "vaultwarden.fullname" .) .Values.yubico.existingSecret }}
+            key: {{ default "YUBICO_SECRET_KEY" .Values.yubico.secretKey.existingSecretKey }}
+      {{- end }}
+      {{- if (.Values.yubico.server) }}
+      - name: YUBICO_SERVER
+        value: {{ .Values.yubico.server }}
+      {{- end }}
       {{- if ne "default" .Values.database.type }}
       - name: DATABASE_URL
         {{- if .Values.database.existingSecret }}

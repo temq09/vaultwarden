@@ -514,12 +514,17 @@ orgGroupsEnabled: "false"
 
 ## Yubico (Yubikey) settings
 yubico:
+  existingSecret: ""
   ## @param yubico.clientId Yubico client ID
   ##
-  clientId: ""
+  clientId:
+    value: ""
+    existingSecretKey: ""
   ## @param yubico.secretKey Yubico secret key
   ##
-  secretKey: ""
+  secretKey:
+    value: ""
+    existingSecretKey: ""
   ## @param yubico.server Specify a Yubico server, otherwise the default servers will be used
   ##
   server: ""
