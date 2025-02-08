@@ -54,6 +54,13 @@ containers:
             name: {{ default (include "vaultwarden.fullname" .) .Values.yubico.existingSecret }}
             key: {{ default "YUBICO_SECRET_KEY" .Values.yubico.secretKey.existingSecretKey }}
       {{- end }}
+      {{- if or (.Values.yubico.clientId.value) (.Values.yubico.clientId.existingSecretKey) }}
+      - name: YUBICO_CLIENT_ID
+        valueFrom:
+          secretKeyRef:
+            name: {{ default (include "vaultwarden.fullname" .) .Values.yubico.existingSecret }}
+            key: {{ default "YUBICO_CLIENT_ID" .Values.yubico.clientId.existingSecretKey }}
+      {{- end }}
       {{- if or (.Values.duo.sKey.value) (.Values.duo.sKey.existingSecretKey) }}
       - name: DUO_SKEY
         valueFrom:
