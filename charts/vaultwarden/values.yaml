@@ -590,7 +590,7 @@ yubico:
     existingSecretKey: ""
   ## Yubico client id
   ##
-  clientId:
+  clientIdSecret:
     value: ""
     ## @param yubico.clientId.existingSecretKey When using an existing secret, specify the key which contains the client id.
     ## Example: YUBICO_CLIENT_ID
