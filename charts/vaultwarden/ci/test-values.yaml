@@ -15,9 +15,10 @@ image:
     - name: myRegKey
 
 yubico:
-  clientId: "ABCDE"
   secretKey:
     value: "12345"
+  clientIdSecret:
+    value: "ABCDE"
 
 duo:
   hostname: api.duohelp.com

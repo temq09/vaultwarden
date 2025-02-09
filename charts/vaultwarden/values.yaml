@@ -574,9 +574,6 @@ orgGroupsEnabled: "false"
 ## Reference: https://github.com/dani-garcia/vaultwarden/wiki/Enabling-Yubikey-OTP-authentication
 ##
 yubico:
-  ## @param yubico.clientId Yubico client ID
-  ##
-  clientId: ""
   ## @param yubico.existingSecret Name of an existing secret containing the Yubico secret key. Also set yubico.secretKey.existingSecretKey.
   ##
   existingSecret: ""
@@ -591,6 +588,15 @@ yubico:
     ## Example: YUBICO_SECRET_KEY
     ##
     existingSecretKey: ""
+  ## Yubico client id
+  ##
+  clientIdSecret:
+    value: ""
+    ## @param yubico.clientId.existingSecretKey When using an existing secret, specify the key which contains the client id.
+    ## Example: YUBICO_CLIENT_ID
+    ##
+    existingSecretKey: ""
+
   ## @param yubico.server Specify a Yubico server, otherwise the default servers will be used
   ##
   server: ""
